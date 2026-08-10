@@ -1,0 +1,10 @@
+{
+    "student": {
+        "name": "Rahul Sharma",
+        "email": "rahul.sharma@gmail.com",
+        "phone": "9876543210",
+        "dob": "2005-05-15",
+        "course": "B.Tech",
+        "address": "Jaipur, Rajasthan"
+    }
+}
