@@ -2,7 +2,9 @@ const fs = require("fs");
 
 let passed = true;
 
-console.log("Registration Test\n");
+console.log("================================");
+console.log("   STUDENT REGISTRATION TEST");
+console.log("================================\n");
 
 // TC01: Check index.html
 if (fs.existsSync("index.html")) {
@@ -36,63 +38,89 @@ if (fs.existsSync("test.json")) {
     passed = false;
 }
 
+// Read JSON
+let data;
 
-// Read JSON file
-const data = JSON.parse(fs.readFileSync("test.json", "utf8"));
-const student = data.students[0];
+try {
+    data = JSON.parse(fs.readFileSync("test.json", "utf8"));
+    console.log("TC05: test.json contains valid JSON: PASS");
+} catch (error) {
+    console.log("TC05: test.json contains valid JSON: FAIL");
+    passed = false;
+    process.exit(1);
+}
 
+// Get student object
+const student = data.student;
 
-// TC05: Name validation
-if (student.name.trim() !== "") {
-    console.log("TC05: Name validation: PASS");
+// TC06: Name validation
+if (student && student.name && student.name.trim() !== "") {
+    console.log("TC06: Name validation: PASS");
 } else {
-    console.log("TC05: Name validation: FAIL");
+    console.log("TC06: Name validation: FAIL");
     passed = false;
 }
 
-
-// TC06: Email validation
-if (student.email.includes("@")) {
-    console.log("TC06: Email validation: PASS");
+// TC07: Email validation
+if (
+    student &&
+    student.email &&
+    student.email.includes("@") &&
+    student.email.includes(".")
+) {
+    console.log("TC07: Email validation: PASS");
 } else {
-    console.log("TC06: Email validation: FAIL");
+    console.log("TC07: Email validation: FAIL");
     passed = false;
 }
 
-
-// TC07: Mobile validation
-if (student.mobile.length === 10) {
-    console.log("TC07: Mobile validation: PASS");
+// TC08: Phone validation
+if (
+    student &&
+    student.phone &&
+    /^\d{10}$/.test(student.phone)
+) {
+    console.log("TC08: Phone validation: PASS");
 } else {
-    console.log("TC07: Mobile validation: FAIL");
+    console.log("TC08: Phone validation: FAIL");
     passed = false;
 }
 
-
-// TC08: Branch validation
-if (student.branch !== "") {
-    console.log("TC08: Branch validation: PASS");
+// TC09: DOB validation
+if (
+    student &&
+    student.dob &&
+    /^\d{4}-\d{2}-\d{2}$/.test(student.dob)
+) {
+    console.log("TC09: DOB validation: PASS");
 } else {
-    console.log("TC08: Branch validation: FAIL");
+    console.log("TC09: DOB validation: FAIL");
     passed = false;
 }
 
-
-// TC09: Password validation
-if (student.password.length >= 6) {
-    console.log("TC09: Password validation: PASS");
+// TC10: Course and address validation
+if (
+    student &&
+    student.course &&
+    student.course.trim() !== "" &&
+    student.address &&
+    student.address.trim() !== ""
+) {
+    console.log("TC10: Course and Address validation: PASS");
 } else {
-    console.log("TC09: Password validation: FAIL");
+    console.log("TC10: Course and Address validation: FAIL");
     passed = false;
 }
 
+// Final result
+console.log("\n================================");
 
-// TC10: Registration successful
 if (passed) {
-    console.log("TC10: Registration successful: PASS");
-    console.log("\nBuild Success");
+    console.log("ALL 10 TEST CASES PASSED");
+    console.log("BUILD SUCCESS");
+    process.exit(0);
 } else {
-    console.log("TC10: Registration successful: FAIL");
-    console.log("\nBuild Failed");
-    passed = false;
+    console.log("SOME TEST CASES FAILED");
+    console.log("BUILD FAILED");
+    process.exit(1);
 }
