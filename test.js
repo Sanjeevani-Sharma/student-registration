@@ -39,19 +39,26 @@ if (fs.existsSync("test.json")) {
 }
 
 // Read JSON
-let data;
+let data = null;
+let student = null;
 
-try {
-    data = JSON.parse(fs.readFileSync("test.json", "utf8"));
-    console.log("TC05: test.json contains valid JSON: PASS");
-} catch (error) {
+if (fs.existsSync("test.json")) {
+    try {
+        data = JSON.parse(fs.readFileSync("test.json", "utf8"));
+        console.log("TC05: test.json contains valid JSON: PASS");
+    } catch (error) {
+        console.log("TC05: test.json contains valid JSON: FAIL");
+        passed = false;
+    }
+} else {
     console.log("TC05: test.json contains valid JSON: FAIL");
     passed = false;
-    process.exit(1);
 }
 
 // Get student object
-const student = data.student;
+if (data && data.student) {
+    student = data.student;
+}
 
 // TC06: Name validation
 if (student && student.name && student.name.trim() !== "") {
@@ -98,7 +105,7 @@ if (
     passed = false;
 }
 
-// TC10: Course and address validation
+// TC10: Course and Address validation
 if (
     student &&
     student.course &&
