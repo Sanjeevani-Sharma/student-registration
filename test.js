@@ -85,7 +85,7 @@ if (
 if (
     student &&
     student.phone &&
-    /^999999999999$/.test(student.phone)
+    /^\d{10}$/.test(student.phone)
 ) {
     console.log("TC08: Phone validation: PASS");
 } else {
