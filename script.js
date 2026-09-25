@@ -12,18 +12,17 @@ form.addEventListener("submit", async function(event) {
         return;
     }
 
-    // Get form data
     const student = {
         name: document.getElementById("name").value,
         email: document.getElementById("email").value,
         phone: phone,
         dob: document.getElementById("dob").value,
         course: document.getElementById("course").value,
-        address: document.getElementById("address").value
+        address: document.getElementById("address").value,
+        password: document.getElementById("password").value
     };
 
     try {
-        // Send data to Node.js server
         const response = await fetch("/register", {
             method: "POST",
             headers: {

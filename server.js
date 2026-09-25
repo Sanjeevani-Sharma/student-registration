@@ -54,6 +54,70 @@ const server = http.createServer((req, res) => {
         return;
     }
 
+    // Handle login
+    // Handle login
+if (req.method === "POST" && req.url === "/login") {
+
+    let body = "";
+
+    req.on("data", chunk => {
+        body += chunk.toString();
+    });
+
+    req.on("end", () => {
+
+        try {
+            const loginData = JSON.parse(body);
+
+            const data = JSON.parse(
+                fs.readFileSync("test.json", "utf8")
+            );
+
+            const student = data.student;
+
+            if (
+                student &&
+                student.email === loginData.email &&
+                student.password === loginData.password
+            ) {
+
+                res.writeHead(200, {
+                    "Content-Type": "application/json"
+                });
+
+                res.end(JSON.stringify({
+                    success: true,
+                    name: student.name
+                }));
+
+            } else {
+
+                res.writeHead(401, {
+                    "Content-Type": "application/json"
+                });
+
+                res.end(JSON.stringify({
+                    success: false,
+                    message: "Invalid email or password"
+                }));
+            }
+
+        } catch (error) {
+
+            res.writeHead(400, {
+                "Content-Type": "application/json"
+            });
+
+            res.end(JSON.stringify({
+                success: false,
+                message: "Invalid login data"
+            }));
+        }
+    });
+
+    return;
+}
+
     // Serve files
     let filePath = req.url === "/"
         ? "index.html"

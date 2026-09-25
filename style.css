@@ -5,14 +5,15 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    margin: 0;
 }
 
 .container {
-    width: 400px;
+    width: 350px;
     background-color: white;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 h1 {
@@ -22,7 +23,7 @@ h1 {
 
 label {
     display: block;
-    margin-top: 12px;
+    margin-top: 10px;
     margin-bottom: 5px;
     font-weight: bold;
 }
@@ -31,23 +32,25 @@ input,
 select,
 textarea {
     width: 100%;
-    padding: 9px;
+    padding: 8px;
+    box-sizing: border-box;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 textarea {
-    height: 70px;
+    height: 60px;
+    resize: vertical;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 9px;
+    margin-top: 18px;
     background-color: #2563eb;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
@@ -55,8 +58,38 @@ button:hover {
     background-color: #1d4ed8;
 }
 
-#message {
+p {
     text-align: center;
-    font-weight: bold;
-    margin-top: 15px;
 }
+
+a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+#message {
+    font-weight: bold;
+}
+
+
+.welcome-container {
+    text-align: center;
+    padding: 40px 25px;
+}
+
+.welcome-container h1 {
+    color: #2563eb;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.welcome-container p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.welcome-container button {
+    width: 120px;
+    margin-top: 5px;
+}
+

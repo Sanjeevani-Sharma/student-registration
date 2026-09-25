@@ -1,10 +1,11 @@
 {
     "student": {
-        "name": "Sanjeevani Sharma",
-        "email": "sanjeevanisharma2007@gmail.com",
+        "name": "sanjeevani",
+        "email": "abc@gmail.com",
         "phone": "9057571354",
         "dob": "2007-11-08",
         "course": "B.Tech",
-        "address": "jaipur"
+        "address": "jaipur",
+        "password": "1234"
     }
 }
