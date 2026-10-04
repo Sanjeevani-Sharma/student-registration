@@ -1,0 +1,22 @@
+{
+  "name": "student-registration",
+  "version": "1.0.0",
+  "description": "",
+  "main": "login.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanjeevani-Sharma/student-registration.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sanjeevani-Sharma/student-registration/issues"
+  },
+  "homepage": "https://github.com/Sanjeevani-Sharma/student-registration#readme"
+}
